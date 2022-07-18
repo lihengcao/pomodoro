@@ -47,6 +47,7 @@ fn start_timer(duration: u64) {
     println!(); // print newline
 }
 
+// make this a macro
 // fn printflush(str: String) {
 
 // }
