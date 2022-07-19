@@ -3,5 +3,5 @@ Rudimentary CLI pomodoro timer
 
 ## Goals
 - Make a simple pomodoro timer app
-- Practice Rust
+- Learn and practice Rust
 - Maybe make a GUI in the future

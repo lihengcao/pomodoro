@@ -33,6 +33,14 @@ fn get_input(prompt: &str) -> String {
 
 }
 
+// macro needs to appear before it's used in the code, but not functions
+macro_rules! print_flush{
+    ($input:expr) =>  {
+        print!($input);
+        io::stdout().flush().expect("erro flushing");
+    }
+}
+
 fn start_timer(duration: u64) {
     let start = time::Instant::now();
 
@@ -40,15 +48,11 @@ fn start_timer(duration: u64) {
         while time::Instant::now() < start + time::Duration::new(duration - t, 0) {} // do nothing/wait for one second
         // !TODO measure length of output
         // for not, just assuming that no number will be more than 5 digits
-        print!("\r{}", " ".repeat(5)); // clear previous output
-        print!("\r{t}"); // print current number
-        io::stdout().flush().expect("error flushing");
+        let clear = " ".repeat(5);
+        print_flush!("\r{clear}\r{t}");
+        // print!("\r{}", " ".repeat(5)); // clear previous output
+        // print!("\r{t}"); // print current number
+        // io::stdout().flush().expect("error flushing");
     }
     println!(); // print newline
 }
-
-// make this a macro
-// fn printflush(str: String) {
-
-// }
-
